@@ -11,26 +11,24 @@ void GildedRose::updateQuality()
 {
     for(int i = 0; i < items.size(); i++)
     {
-        if(items[i].quality > 0 && items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert" && items[i].name != "Sulfuras, Hand of Ragnaros")
+        if( items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert" && items[i].name != "Sulfuras, Hand of Ragnaros")
         {                        
+            if(items[i].quality > 0 )
                     items[i].quality--;                          
         }
-        else
-        {
-            if(items[i].quality < 50 && items[i].quality != 0)
-            {
-                items[i].quality++;
+        else if(items[i].quality != 0 && items[i].quality < 50 )
+        {           
+            items[i].quality++;
 
-                if (items[i].name == "Backstage passes to a TAFKAL80ETC concert" && items[i].sellIn < 11 && items[i].quality < 50)
-                {                                      
-                    items[i].quality++;     
+            if (items[i].name == "Backstage passes to a TAFKAL80ETC concert" && items[i].sellIn < 11 && items[i].quality < 50)
+            {                                      
+                items[i].quality++;     
 
-                    if(items[i].sellIn < 6 && items[i].quality < 50)
-                    {                      
-                            items[i].quality++;                       
-                    }
+                if(items[i].sellIn < 6 && items[i].quality < 50)
+                {                      
+                    items[i].quality++;                       
                 }
-            }
+            }           
         }
 
         if(items[i].name != "Sulfuras, Hand of Ragnaros")
