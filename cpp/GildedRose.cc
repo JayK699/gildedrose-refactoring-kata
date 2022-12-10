@@ -38,19 +38,15 @@ void GildedRose::updateQuality()
             items[i].sellIn--;
         }
 
-        if(items[i].sellIn < 0 && items[i].name != brie)
-        {
-            
-            if(items[i].name != backstage)
-            {                   
-                items[i].quality--;   
-            }
-            else
+        if(items[i].sellIn < 0 && items[i].name != brie && items[i].name != backstage && items[i].name != sulfuras)
+        {             
+                items[i].quality--;    
+        }
+        else if(items[i].sellIn < 0 && items[i].name != brie && items[i].name != sulfuras)
             {
                 items[i].quality = 0;
             }
-        }
-        else if(items[i].sellIn < 0 && items[i].quality < 50)
+        else if(items[i].sellIn < 0 && items[i].quality < 50 && items[i].name != sulfuras)
             {  
                 items[i].quality++;                
             }

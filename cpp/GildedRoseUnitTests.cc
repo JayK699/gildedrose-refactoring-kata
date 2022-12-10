@@ -155,6 +155,28 @@ TEST(UpdateSulfuras, givenSellInIs0_shouldNotChange) {
     // then
     EXPECT_EQ(app.items[0], Item(SULFURAS, 0, 80));
 }
+TEST(UpdateSulfuras, givenSellInIsMinus_shouldNotChange) {
+    // given
+    auto item = Item(SULFURAS, -1, 80);
+    GildedRose app({item});
+
+    // when
+    app.updateQuality();
+
+    // then
+    EXPECT_EQ(app.items[0], Item(SULFURAS, -1, 80));
+}
+TEST(UpdateSulfuras, givenQualityIsSmallerThan50_shouldNotChange) {
+    // given
+    auto item = Item(SULFURAS, -1, 49);
+    GildedRose app({item});
+
+    // when
+    app.updateQuality();
+
+    // then
+    EXPECT_EQ(app.items[0], Item(SULFURAS, -1, 49));
+}
 
 TEST(UpdateBackstagePasses, givenSellInIs10_shouldIncreaseQualityBy2) {
     // given
@@ -212,6 +234,7 @@ TEST(UpdateBackstagePasses, givenSellInIsNegative_shouldDropQualityTo0) {
 
     EXPECT_EQ(app.items[0], Item(BACKSTAGE_PASS, -2, 0));
 }
+
 
 void example() {
     ::std::vector<Item> items;
