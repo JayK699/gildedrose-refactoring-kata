@@ -155,27 +155,17 @@ TEST(UpdateSulfuras, givenSellInIs0_shouldNotChange) {
     // then
     EXPECT_EQ(app.items[0], Item(SULFURAS, 0, 80));
 }
-TEST(UpdateSulfuras, givenSellInIsMinus_shouldNotChange) {
-    // given
-    auto item = Item(SULFURAS, -1, 80);
-    GildedRose app({item});
 
-    // when
-    app.updateQuality();
-
-    // then
-    EXPECT_EQ(app.items[0], Item(SULFURAS, -1, 80));
-}
 TEST(UpdateSulfuras, givenQualityIsSmallerThan50_shouldNotChange) {
     // given
-    auto item = Item(SULFURAS, -1, 49);
+    auto item = Item(SULFURAS, 0, 49);
     GildedRose app({item});
 
     // when
     app.updateQuality();
 
     // then
-    EXPECT_EQ(app.items[0], Item(SULFURAS, -1, 49));
+    EXPECT_EQ(app.items[0], Item(SULFURAS, 0, 49));
 }
 
 TEST(UpdateBackstagePasses, givenSellInIs10_shouldIncreaseQualityBy2) {
